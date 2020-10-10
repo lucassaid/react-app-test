@@ -5,19 +5,19 @@ import BurguerMenu from './BurguerMenu'
 import SectionMenu from './SectionMenu'
 import styles from './Header.module.css'
 
-const prueba = ['Home', 'Politics', 'Opinion', 'Sports', 'Nation']
 
-export default function Header({}) {
+export default function Header({sections, onMenuClicked}) {
 
   const [hiddenSections, setHiddenSections] = useState(false)
 
   const handleScroll = e => {
+    const breakPoint = 400
     const { scrollTop } = document.documentElement
-    if(scrollTop > 400 && !hiddenSections) {
+    if(scrollTop > breakPoint && !hiddenSections) {
       // user is not at the top, hide sections
       setHiddenSections(true)
     }
-    if(scrollTop <= 400 && hiddenSections) {
+    if(scrollTop <= breakPoint && hiddenSections) {
       // user is at the top, show sections
       setHiddenSections(false)
     }
@@ -32,16 +32,24 @@ export default function Header({}) {
   return (
     <div className={styles.header}>
       <Background color="#333" className={styles.topBar}>
-        <BurguerMenu color="white" className={styles.leftIcon}/>
+        <BurguerMenu
+          color="white"
+          className={styles.leftIcon}
+          onClick={onMenuClicked}
+        />
         <div className={styles.topBarContent}>
-          <Logo color="white" title="Prueba"/>
+          <Logo
+            size={200}
+            image="https://spacedev.uy/assets/img/space.png"
+            title="Prueba"
+          />
         </div>
       </Background>
       <SectionMenu
         color="white"
         fontSize={20}
         backgroundColor="#333"
-        sections={prueba}
+        sections={sections}
         hidden={hiddenSections}
       />
     </div>

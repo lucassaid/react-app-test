@@ -11,7 +11,12 @@ export default function Logo({
 
   return(
     <div 
-      style={{ width: size, height: 'auto', color }}
+      style={{
+        width: size,
+        height: 'auto',
+        color,
+        maxWidth: '70%'
+      }}
     >
       {!image && title && <h4>{title}</h4>}
       {image && renderedImage}

@@ -1,7 +1,8 @@
-.container {
+.article {
   display: flex;
   flex-wrap: wrap;
   margin-bottom: 40px;
+  padding: 20px;
 }
 
 .imgContainer {
@@ -17,5 +18,9 @@
   .imgContainer {
     width: 100%;
     margin-right: 0;
+  }
+
+  .imgContainer {
+    margin-bottom: 20px;
   }
 }

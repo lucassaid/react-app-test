@@ -5,6 +5,7 @@ export default function BurguerMenu({color, className, onClick}) {
   return (
     <div
       className={className}
+      style={{cursor: 'pointer'}}
       onClick={onClick}
     >
       <FontAwesomeIcon

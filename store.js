@@ -1,14 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit'
 
-import clockReducer from './lib/slices/clockSlice'
-import counterReducer from './lib/slices/counterSlice'
-import notesReducer from './lib/slices/notesSlice'
+import articlesReducer from './lib/slices/articlesSlice'
 
 export default configureStore({
   reducer: {
-    counter: counterReducer,
-    clock: clockReducer,
-    notes: notesReducer,
+    articles: articlesReducer,
   },
   devTools: true,
 })

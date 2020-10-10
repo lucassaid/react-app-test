@@ -1,0 +1,39 @@
+.drawerContainer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  z-index: 1000;
+}
+
+.drawer {
+  position: relative;
+  width: 300px;
+  height: 100%;
+  background-color: white;
+  z-index: 2;
+  transition: all 300ms ease;
+}
+
+.backdrop {
+  top: 0;
+  left: 0;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  z-index: 1;
+  transition: all 300ms ease;
+}
+
+@media(max-width: 400px) {
+  .drawer {
+    width: 100%;
+  }
+}
+
+.drawerTop {
+  padding: 10px;
+  text-align: right;
+}
