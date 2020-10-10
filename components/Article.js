@@ -1,7 +1,7 @@
 
 import styles from './Article.module.css'
 
-export default function Article({article}) {
+export default function Article({article, extra}) {
 
   const Image = (
     <div className={styles.imgContainer}>
@@ -16,6 +16,7 @@ export default function Article({article}) {
         <h3>{article.title}</h3>
         <div>{article.content}</div>
       </div>
+      <div className={styles.extra}>{extra}</div>
     </div>
   )
 }

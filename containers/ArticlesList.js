@@ -1,7 +1,13 @@
 import { useEffect } from 'react'
 import Article from '../components/Article'
-import { fetchArticles, selectArticles } from '../lib/slices/articlesSlice'
+import { 
+  fetchArticles,
+  selectArticles,
+  setEmotion,
+  deleteArticle
+} from '../lib/slices/articlesSlice'
 import { useDispatch, useSelector } from 'react-redux'
+import ArticleActions from '../components/ArticleActions'
 
 export default function ArticlesList({}) {
 
@@ -9,8 +15,16 @@ export default function ArticlesList({}) {
   const dispatchFetchArticles = () => {
     dispatch(fetchArticles())
   }
-  useEffect(() => dispatchFetchArticles(), [])
+  useEffect(() => dispatchFetchArticles(), [dispatch])
   const articles = useSelector(selectArticles)
+
+  const handleEmotionChanged = (articleId, emotionId) => {
+    dispatch(setEmotion({articleId, emotionId}))
+  }
+
+  const handleDelete = articleId => {
+    dispatch(deleteArticle({articleId}))
+  }
 
   return(
     <>
@@ -19,6 +33,16 @@ export default function ArticlesList({}) {
           <Article
             key={article.id}
             article={article}
+            extra={
+              <ArticleActions
+                articleId={article.id}
+                emotion={article.emotion}
+                onEmtionChanged={emotionId => {
+                  handleEmotionChanged(article.id, emotionId)
+                }}
+                onDelete={() => handleDelete(article.id)}
+              />
+            }
           />
           <hr/>
         </>

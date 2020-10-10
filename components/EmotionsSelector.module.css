@@ -1,0 +1,12 @@
+.emotionsMenu {
+  border-radius: 4px;
+  background-color: rgb(247, 247, 247);
+  border: 1px solid #DDD;
+}
+
+.emotionsMenuItem {
+  padding: 4px 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}

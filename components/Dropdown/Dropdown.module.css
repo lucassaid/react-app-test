@@ -1,0 +1,8 @@
+.dropdown {
+  position: relative;
+}
+
+.overlay {
+  position: absolute;
+  z-index: 20;
+}
