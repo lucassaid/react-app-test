@@ -1,0 +1,20 @@
+.header {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 10;
+}
+
+.topBar {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+  z-index: 2;
+}
+
+.topBarContent {
+  flex: 1;
+  text-align: center;
+}

@@ -1,0 +1,21 @@
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 40px;
+}
+
+.imgContainer {
+  width: 300px;
+  margin-right: 20px;
+}
+
+.right {
+  flex: 1; 
+}
+
+@media(max-width: 767px) {
+  .imgContainer {
+    width: 100%;
+    margin-right: 0;
+  }
+}
