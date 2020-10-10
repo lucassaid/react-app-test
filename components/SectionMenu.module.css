@@ -14,7 +14,7 @@
   justify-content: center;
 }
 
-.section[selected]::after {
+.section.selected::after {
   content: '';
   bottom: 3px;
   width: 80%;

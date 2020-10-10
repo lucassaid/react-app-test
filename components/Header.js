@@ -1,9 +1,9 @@
-import { useEffect, useState } from 'react'
 import Background from './Background'
 import Logo from './Logo'
 import BurguerMenu from './BurguerMenu'
 import SectionMenu from './SectionMenu'
 import styles from './Header.module.css'
+import useScrollQuery from '../lib/useScrollQuery'
 
 export default function Header({customization, onMenuClicked}) {
 
@@ -15,26 +15,7 @@ export default function Header({customization, onMenuClicked}) {
     name
   } = customization
 
-  const [hiddenSections, setHiddenSections] = useState(false)
-
-  const handleScroll = e => {
-    const breakPoint = 400
-    const { scrollTop } = document.documentElement
-    if(scrollTop > breakPoint && !hiddenSections) {
-      // user is not at the top, hide sections
-      setHiddenSections(true)
-    }
-    if(scrollTop <= breakPoint && hiddenSections) {
-      // user is at the top, show sections
-      setHiddenSections(false)
-    }
-  }
-
-  useEffect(() => {
-    window.addEventListener('scroll', handleScroll)
-    // cleanup
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [hiddenSections])
+  const hiddenSections = useScrollQuery(400)
 
   return (
     <div className={styles.header}>

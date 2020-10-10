@@ -16,10 +16,10 @@ export default function Drawer({
     if(visible) {
       // set render to true
       setRenderDrawer(true)
-      // wait for next render before starting animation
+      // wait for next render before starting show animation
       setTimeout(() => setDrawerVisible(true), 0)
     } else {
-      // init animation
+      // init hide animation
       setDrawerVisible(false)
       // wait for animation to complete before setting render to false
       setTimeout(() => setRenderDrawer(false), 300)

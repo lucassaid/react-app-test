@@ -14,7 +14,9 @@ export default function Dropdown({
 }) {
 
   const [visibleOverlay, setVisibleOverlay] = useState(false)
+  // set a reference to the dropdown so we can attach listeners to it
   const dropdownRef = useRef(null)
+  // set a timer that persist between renders
   const mouseoutTimeout = useRef()
 
   const handleMouseEnter = e => {
