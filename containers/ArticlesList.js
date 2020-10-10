@@ -3,6 +3,7 @@ import Article from '../components/Article'
 import { 
   fetchArticles,
   selectArticles,
+  loadingStateSelector,
   setEmotion,
   deleteArticle
 } from '../lib/slices/articlesSlice'
@@ -12,11 +13,17 @@ import ArticleActions from '../components/ArticleActions'
 export default function ArticlesList({}) {
 
   const dispatch = useDispatch()
-  const dispatchFetchArticles = () => {
-    dispatch(fetchArticles())
+
+  const dispatchFetchArticles = async () => {
+    await dispatch(fetchArticles())
   }
-  useEffect(() => dispatchFetchArticles(), [dispatch])
+
+  useEffect(() => {
+    dispatchFetchArticles()
+  }, [dispatch])
+
   const articles = useSelector(selectArticles)
+  const loadingState = useSelector(loadingStateSelector)
 
   const handleEmotionChanged = (articleId, emotionId) => {
     dispatch(setEmotion({articleId, emotionId}))
@@ -26,27 +33,36 @@ export default function ArticlesList({}) {
     dispatch(deleteArticle({articleId}))
   }
 
+  const articlesArr = loadingState == 'loading' ? (
+    [{},{},{},{}]
+  ): articles
+
   return(
     <>
-      {articles.map(article => (
-        <>
-          <Article
-            key={article.id}
-            article={article}
-            extra={
-              <ArticleActions
-                articleId={article.id}
-                emotion={article.emotion}
-                onEmtionChanged={emotionId => {
-                  handleEmotionChanged(article.id, emotionId)
-                }}
-                onDelete={() => handleDelete(article.id)}
-              />
-            }
+      {articlesArr.map((article, i) => {
+
+        const actions = (
+          <ArticleActions
+            articleId={article.id}
+            emotion={article.emotion}
+            onEmtionChanged={emotionId => {
+              handleEmotionChanged(article.id, emotionId)
+            }}
+            onDelete={() => handleDelete(article.id)}
           />
-          <hr/>
-        </>
-      ))}
+        )
+
+        return(
+          <div key={article.id || i}>
+            <Article
+              article={article}
+              loading={!Boolean(article.id)}
+              extra={article.id && actions}
+            />
+            <hr/>
+          </div>
+        )
+      })}
     </>
   )
 }

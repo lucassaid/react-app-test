@@ -1,7 +1,7 @@
-import Dropdown from './Dropdown'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSmile, faFrown, faMeh } from '@fortawesome/free-regular-svg-icons'
 import styles from './EmotionsSelector.module.css'
+import Dropdown from './Dropdown'
 
 const emotions = {
   positive: {icon: faSmile, label: 'Positive', color: '#4CD362'},
@@ -9,8 +9,11 @@ const emotions = {
   neutral: {icon: faMeh, label: 'Neutral', color: '#444'},
 }
 
+const unsetEmotion = {icon: faSmile, label: 'Positive', color: '#AAA'}
+
 export default function EmotionSelector({selected, onEmtionChanged}) {
 
+  /* list emotions to show in our dropdown */
   const emotionsMenu = (
     <div className={styles.emotionsMenu}>
       {Object.keys(emotions).map(emotionId => {
@@ -33,15 +36,15 @@ export default function EmotionSelector({selected, onEmtionChanged}) {
     </div>
   )
 
-  const triggerIcon = selected ? emotions[selected].icon : faSmile
-  const triggerColor = selected ? emotions[selected].color : '#AAA'
+  const selectedEmotion = emotions[selected] || unsetEmotion
+  const { icon, color } = selectedEmotion
 
   const trigger = (
     <FontAwesomeIcon
       style={{cursor: 'pointer'}}
-      color={triggerColor}
+      color={color}
       size="lg"
-      icon={triggerIcon}
+      icon={icon}
     />
   )
 

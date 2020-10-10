@@ -14,10 +14,14 @@ export default function Drawer({
 
   useEffect(() => {
     if(visible) {
+      // set render to true
       setRenderDrawer(true)
+      // wait for next render before starting animation
       setTimeout(() => setDrawerVisible(true), 0)
     } else {
+      // init animation
       setDrawerVisible(false)
+      // wait for animation to complete before setting render to false
       setTimeout(() => setRenderDrawer(false), 300)
     }
   }, [visible])
@@ -28,6 +32,7 @@ export default function Drawer({
     transform: `translateX(${drawerVisible ? 0 : '-100%'})`
   }
 
+  // top bar of the drawer
   const drawerTop = (
     <div className={styles.drawerTop}>
       <FontAwesomeIcon
@@ -38,8 +43,9 @@ export default function Drawer({
       />
     </div>
   )
-
-  const backDrow = (
+  
+  // backdrop to darken everything else and close drawer if clicked
+  const backdrop = (
     <div
       onClick={onClose}
       className={styles.backdrop}
@@ -53,7 +59,7 @@ export default function Drawer({
         {drawerTop}
         {children}
       </div>
-      {backDrow}
+      {backdrop}
     </div>
   )
 }

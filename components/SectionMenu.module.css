@@ -9,4 +9,18 @@
 
 .section {
   padding: 10px 20px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.section[selected]::after {
+  content: '';
+  bottom: 3px;
+  width: 80%;
+  position: absolute;
+  height: 3px;
+  background-color: white;
+  z-index: 4;
+  border-radius: 3px 3px 0 0;
 }

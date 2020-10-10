@@ -1,20 +1,34 @@
-
 import styles from './Article.module.css'
 
-export default function Article({article, extra}) {
+export default function Article({article, extra, loading}) {
 
-  const Image = (
+  const {
+    urlToImage,
+    title,
+    content
+  } = article
+
+  const shouldRenderImage = urlToImage || loading
+  const placeholderClass = loading ? styles.placeholder : ''
+  
+  const image = (
     <div className={styles.imgContainer}>
-      <img src={article.urlToImage} alt={article.title}/>
+      <img src={urlToImage} alt={article.title}/>
     </div>
   )
 
+  const imagePlaceholder = (
+    <div className={`${styles.imgContainer} ${styles.imagePlaceholder}`}/>
+  )
+  
+  const renderedImage = loading ? imagePlaceholder : image
+
   return(
     <div className={styles.article}>
-      {article.urlToImage && Image}
+      {shouldRenderImage && renderedImage}
       <div className={styles.right}>
-        <h3>{article.title}</h3>
-        <div>{article.content}</div>
+        <h3 className={placeholderClass}>{title}</h3>
+        <div className={placeholderClass}>{content}</div>
       </div>
       <div className={styles.extra}>{extra}</div>
     </div>

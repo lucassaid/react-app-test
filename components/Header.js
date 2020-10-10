@@ -5,8 +5,15 @@ import BurguerMenu from './BurguerMenu'
 import SectionMenu from './SectionMenu'
 import styles from './Header.module.css'
 
+export default function Header({customization, onMenuClicked}) {
 
-export default function Header({sections, onMenuClicked}) {
+  const {
+    sections = [],
+    headerBgColor,
+    headerTextColor,
+    logo,
+    name
+  } = customization
 
   const [hiddenSections, setHiddenSections] = useState(false)
 
@@ -31,26 +38,27 @@ export default function Header({sections, onMenuClicked}) {
 
   return (
     <div className={styles.header}>
-      <Background color="#333" className={styles.topBar}>
+      <Background color={headerBgColor} className={styles.topBar}>
         <BurguerMenu
-          color="white"
+          color={headerTextColor}
           className={styles.leftIcon}
           onClick={onMenuClicked}
         />
         <div className={styles.topBarContent}>
           <Logo
             size={200}
-            image="https://spacedev.uy/assets/img/space.png"
-            title="Prueba"
+            image={logo}
+            title={name}
           />
         </div>
       </Background>
       <SectionMenu
-        color="white"
+        color={headerTextColor}
         fontSize={20}
-        backgroundColor="#333"
+        backgroundColor={headerBgColor}
         sections={sections}
         hidden={hiddenSections}
+        selected="Home"
       />
     </div>
   )

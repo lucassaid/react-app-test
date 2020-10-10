@@ -10,6 +10,16 @@
   margin-right: 20px;
 }
 
+.placeholder {
+  background-color: #EEE;
+  height: 20px;
+}
+
+.imagePlaceholder {
+  height: 150px;
+  background-color: #EEE;
+}
+
 .right {
   flex: 1; 
 }

@@ -1,4 +1,4 @@
-import Layout from '../components/Layout'
+import Layout from '../containers/Layout'
 import ArticlesList from '../containers/ArticlesList'
 
 const IndexPage = () => {

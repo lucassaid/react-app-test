@@ -5,7 +5,8 @@ export default function SectionMenu({
   sections,
   color,
   hidden,
-  backgroundColor
+  backgroundColor,
+  selected
 }) {
 
   const style = {
@@ -17,7 +18,11 @@ export default function SectionMenu({
   return (
     <nav className={styles.nav} style={style}>
       {sections.map(section => (
-        <div className={styles.section} key={section}>
+        <div
+          className={styles.section}
+          key={section}
+          selected={selected == section}
+        >
           {section}
         </div>
       ))}

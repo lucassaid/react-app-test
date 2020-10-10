@@ -25,9 +25,9 @@ export default function Dropdown({
   
   const handleMouseOut = e => {
     mouseoutTimeout.current = setTimeout(() => {
-      // close only if the user has left the dropdown for 100ms
+      // close only if the user has left the dropdown for 150ms
       setVisibleOverlay(false)
-    }, 100)
+    }, 150)
   }
 
   useEffect(() => {
