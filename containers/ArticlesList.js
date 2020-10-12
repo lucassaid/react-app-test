@@ -14,6 +14,7 @@ export default function ArticlesList({}) {
 
   const dispatch = useDispatch()
 
+  // fetch articles and store them in redux state
   const dispatchFetchArticles = async () => {
     await dispatch(fetchArticles())
   }
@@ -33,9 +34,9 @@ export default function ArticlesList({}) {
     dispatch(deleteArticle({articleId}))
   }
 
-  const articlesArr = loadingState == 'loading' ? (
-    [{},{},{},{}]
-  ): articles
+  const articlesArr = loadingState == 'loading'
+    ? [{},{},{},{}]
+    : articles
 
   return(
     <>

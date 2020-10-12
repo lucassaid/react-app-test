@@ -10,6 +10,7 @@ import { useDispatch, useSelector } from 'react-redux'
 export default function Layout({children}) {
   const dispatch = useDispatch()
 
+  // fetch customization
   const dispatchFetchCustomization = async () => {
     await dispatch(fetchCustomization())
   }
@@ -18,9 +19,9 @@ export default function Layout({children}) {
     dispatchFetchCustomization()
   }, [dispatch])
 
-  const customization = useSelector(selectCustomization)
   const [drawerVisible, setDrawerVisible] = useState(false)
-
+  
+  const customization = useSelector(selectCustomization)
   const sections = customization.sections || []
   
   const drawerSections = (
