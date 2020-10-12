@@ -12,15 +12,22 @@
   position: relative;
   display: flex;
   justify-content: center;
+  overflow: hidden;
+  cursor: pointer;
 }
 
-.section.selected::after {
+.section::after {
   content: '';
-  bottom: 3px;
+  bottom: -3px;
   width: 80%;
   position: absolute;
   height: 3px;
   background-color: white;
   z-index: 4;
   border-radius: 3px 3px 0 0;
+  transition: all 200ms ease;
+}
+
+.section.selected::after, .section:hover::after {
+  bottom: 0px;
 }
