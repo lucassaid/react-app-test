@@ -1,6 +1,6 @@
 # Test App
 
-This is app is part of a test.
+This app is part of a test.
 
 See [live demo](https://react-app-test-seven.vercel.app/).
 
