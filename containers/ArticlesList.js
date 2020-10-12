@@ -15,8 +15,8 @@ export default function ArticlesList({}) {
   const dispatch = useDispatch()
 
   // fetch articles and store them in redux state
-  const dispatchFetchArticles = async () => {
-    await dispatch(fetchArticles())
+  const dispatchFetchArticles = () => {
+    dispatch(fetchArticles())
   }
 
   useEffect(() => {

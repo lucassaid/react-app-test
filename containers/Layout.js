@@ -11,8 +11,8 @@ export default function Layout({children}) {
   const dispatch = useDispatch()
 
   // fetch customization
-  const dispatchFetchCustomization = async () => {
-    await dispatch(fetchCustomization())
+  const dispatchFetchCustomization = () => {
+    dispatch(fetchCustomization())
   }
   
   useEffect(() => {
