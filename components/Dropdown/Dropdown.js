@@ -13,22 +13,23 @@ export default function Dropdown({
   placement = 'left'
 }) {
 
-  const [visibleOverlay, setVisibleOverlay] = useState(false)
+  const [opened, setOpened] = useState(false)
+
   // set a reference to the dropdown so we can attach listeners to it
   const dropdownRef = useRef(null)
+  
   // set a timer that persist between renders
   const mouseoutTimeout = useRef()
 
   const handleMouseEnter = e => {
-    // prevent closing
-    clearTimeout(mouseoutTimeout.current)
-    setVisibleOverlay(true)
+    clearTimeout(mouseoutTimeout.current) // prevent closing
+    setOpened(true)
   }
   
   const handleMouseOut = e => {
+    // close only if the user has left the dropdown for 150ms
     mouseoutTimeout.current = setTimeout(() => {
-      // close only if the user has left the dropdown for 150ms
-      setVisibleOverlay(false)
+      setOpened(false)
     }, 150)
   }
 
@@ -47,7 +48,7 @@ export default function Dropdown({
   return (
     <div className={styles.dropdown} ref={dropdownRef}>
       {trigger}
-      {visibleOverlay && (
+      {opened && (
         <div
           className={styles.overlay}
           style={{
