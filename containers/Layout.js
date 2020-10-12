@@ -4,11 +4,8 @@ import Drawer from '../components/Drawer'
 import { 
   fetchCustomization,
   selectCustomization,
-  loadingStateSelector,
 } from '../lib/slices/customizationSlice'
 import { useDispatch, useSelector } from 'react-redux'
-
-const prueba = ['Home', 'Politics', 'Opinion', 'Sports', 'Nation']
 
 export default function Layout({children}) {
   const dispatch = useDispatch()
