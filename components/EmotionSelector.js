@@ -11,7 +11,7 @@ const emotions = {
 
 const unsetEmotion = {icon: faSmile, label: 'Positive', color: '#AAA'}
 
-export default function EmotionSelector({selected, onEmtionChanged}) {
+export default function EmotionSelector({selected, onEmotionChanged}) {
 
   /* list emotions to show in our dropdown */
   const emotionsMenu = (
@@ -23,7 +23,7 @@ export default function EmotionSelector({selected, onEmtionChanged}) {
             key={emotionId}
             className={styles.emotionsMenuItem}
             style={{color: emotion.color}}
-            onClick={() => onEmtionChanged(emotionId)}
+            onClick={() => onEmotionChanged(emotionId)}
           >
             <FontAwesomeIcon
               icon={emotion.icon}

@@ -4,13 +4,13 @@ import { faTrashAlt } from '@fortawesome/free-regular-svg-icons'
 
 export default function ArticleActions({
   emotion,
-  onEmtionChanged,
+  onEmotionChanged,
   onDelete
 }) {
   return (
     <div style={{display: 'flex', justifyContent: 'flex-end'}}>
       <EmotionSelector
-        onEmtionChanged={onEmtionChanged}
+        onEmotionChanged={onEmotionChanged}
         selected={emotion}
       />
       <FontAwesomeIcon

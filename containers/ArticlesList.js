@@ -46,7 +46,7 @@ export default function ArticlesList({}) {
           <ArticleActions
             articleId={article.id}
             emotion={article.emotion}
-            onEmtionChanged={emotionId => {
+            onEmotionChanged={emotionId => {
               handleEmotionChanged(article.id, emotionId)
             }}
             onDelete={() => handleDelete(article.id)}

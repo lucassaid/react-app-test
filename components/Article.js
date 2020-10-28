@@ -2,7 +2,7 @@ import styles from './Article.module.css'
 
 export default function Article({article, extra, loading}) {
 
-  const { urlToImage, title, content } = article
+  const { urlToImage, title, content, url } = article
 
   const placeholderClass = loading ? styles.placeholder : ''
   
@@ -28,7 +28,9 @@ export default function Article({article, extra, loading}) {
     <div className={styles.article}>
       <RenderedImage/>
       <div className={styles.right}>
-        <h3 className={placeholderClass}>{title}</h3>
+        <a href={url} target="_blank">
+          <h3 className={placeholderClass}>{title}</h3>
+        </a>
         <div className={placeholderClass}>{content}</div>
       </div>
       <div className={styles.extra}>{extra}</div>
