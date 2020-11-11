@@ -15,10 +15,10 @@ export default function SectionMenu({
   }
 
   const renderSection = section => {
-    const slectedClass = section == selected ? styles.selected : ''
+    const selectedClass = section == selected ? styles.selected : ''
     return (
       <div
-        className={`${styles.section} ${slectedClass}`}
+        className={`${styles.section} ${selectedClass}`}
         key={section}
       >
         {section}
